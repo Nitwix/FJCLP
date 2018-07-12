@@ -1,6 +1,6 @@
 # Frère Jean contre les Picrocholiens voleurs de raisin
 
-[![Waffle.io - Issues in progress](https://badge.waffle.io/Nitwix/FJCLP.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Nitwix/FJCLP)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/Nitwix/FJCLP.svg?columns=all)](https://waffle.io/Nitwix/FJCLP)
 
 
 
