@@ -5,11 +5,6 @@ export default {
   },
 
   preload: function () {
-    this.load.image('sky', 'space3.png');
-    this.load.image('logo', 'phaser3-logo.png');
-    this.progressBar = this.add.graphics();
-    this.load.on('progress', this.onLoadProgress, this);
-    this.load.on('complete', this.onLoadComplete, this);
   },
 
   create: function () {
@@ -19,6 +14,12 @@ export default {
     logo.setVelocity(100, 200);
     logo.setBounce(1, 1);
     logo.setCollideWorldBounds(true);
+  },
+
+  update: function () {
+    if(this.input.activePointer.isDown){
+      this.scene.start('MainMenu');
+    }
   },
 
   extend: {

@@ -1,9 +1,10 @@
 import defaultScene from './scenes/default';
+import MainMenu from './scenes/mainMenu';
 
 const game = new Phaser.Game({
   // See <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
-  width: 800,
-  height: 600,
+  width: 960,
+  height: 540,
   // zoom: 1,
   // resolution: 1,
   type: Phaser.AUTO,
@@ -25,7 +26,7 @@ const game = new Phaser.Game({
   banner: {
     // hidePhaser: false,
     // text: 'white',
-    background: ['#e54661', '#ffa644', '#998a2f', '#2c594f', '#002d40']
+    // background: ['#e54661', '#ffa644', '#998a2f', '#2c594f', '#002d40']
   },
   // fps: {
   //   min: 10,
@@ -52,6 +53,6 @@ const game = new Phaser.Game({
       }
     }
   },
-  scene: defaultScene,
+  scene: [defaultScene, MainMenu],
 
 });
