@@ -1,4 +1,4 @@
-import defaultScene from './scenes/default';
+import Load from './scenes/load';
 import MainMenu from './scenes/mainMenu';
 
 const game = new Phaser.Game({
@@ -34,7 +34,7 @@ const game = new Phaser.Game({
   //   forceSetTimeout: false,
   // },
   // antialias: false,
-  // pixelArt: false,
+  pixelArt: true,
   // transparent: false,
   // clearBeforeRender: true,
   // backgroundColor: 0x000000, // black
@@ -47,12 +47,7 @@ const game = new Phaser.Game({
   },
   physics: {
     default: 'arcade',
-    arcade: {
-      gravity: {
-        y: 180
-      }
-    }
   },
-  scene: [defaultScene, MainMenu],
+  scene: [Load, MainMenu],
 
 });
