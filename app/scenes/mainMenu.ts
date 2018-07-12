@@ -1,6 +1,4 @@
 export default class MainMenu extends Phaser.Scene {
-    raisin;
-    
     constructor(){
         super({
             key: 'MainMenu'
@@ -8,8 +6,16 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create(){
-        this.raisin = this.add.sprite(50,50,'raisins');
-        this.raisin.setScale(4);
+        let raisins = this.add.image(0,0, 'raisins');
+        raisins.setScale(4);
+
+        let container = this.add.container(200,200, [raisins]);
+
+        container.setInteractive(new Phaser.Geom.Rectangle(0,0,raisins.displayWidth, raisins.displayHeight), Phaser.Geom.Rectangle.Contains);
+
+        container.on('pointerup', () => {
+            console.log('clicked');
+        });
     }
 
     update(){

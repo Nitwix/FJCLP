@@ -1,5 +1,10 @@
 # Frère Jean contre les Picrocholiens voleurs de raisin
 
+[![Waffle.io - Issues in progress](https://badge.waffle.io/Nitwix/FJCLP.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Nitwix/FJCLP)
+
+
+
+
 # Forké depuis https://github.com/samme/brunch-phaser-typescript
 Brunch with Phaser 3 (TypeScript)
 ====================
