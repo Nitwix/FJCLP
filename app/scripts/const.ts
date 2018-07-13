@@ -1,4 +1,6 @@
 export const gameProps = {
-    width: 800,
-    height: 450
+    width: 640,
+    height: 480
 };
+
+export const SCALE = 4;

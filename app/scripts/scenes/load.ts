@@ -8,6 +8,7 @@ export default class Load extends Phaser.Scene{
         console.log('loading...');
 
         //load images
+        this.load.image('mainMenuBG', 'mainMenu/background.png')
         this.load.image('raisins', 'raisins.png');
 
         //load fonts
