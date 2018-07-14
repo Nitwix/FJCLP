@@ -12,22 +12,25 @@ export default class MainMenu extends Phaser.Scene {
     create(){
         this.gameZone = this.add.zone(gameProps.width/2, gameProps.height/2, gameProps.width, gameProps.height);
 
-        let raisins = this.add.image(0,0, 'raisins');
-        raisins.setScale(SCALE);
-
-        let background = this.add.image(0,0,'mainMenuBG');
-        background.setScale(SCALE);
-        Phaser.Display.Align.In.Center(background, this.gameZone);
-
-        let container = this.add.container(200,200, [raisins]);
-        container.setInteractive(new Phaser.Geom.Rectangle(0,0,raisins.displayWidth, raisins.displayHeight), Phaser.Geom.Rectangle.Contains);
-        container.on('pointerup', () => {
-            console.log('clicked');
+        let cross = this.add.image(0,0,'mainMenuCross');
+        cross.setScale(SCALE);
+        Phaser.Display.Align.In.TopCenter(cross, this.gameZone, 0, cross.displayHeight);
+        this.add.tween({
+                targets:cross, 
+                y:gameProps.height-120,
+                ease: 'Quad.easeIn',
+                duration: 1000,
+                onComplete: this._onCrossFall,
+                onCompleteParams: [ this ]
         });
 
-        //TODO: aligner le text de facon centrée (Quand la 3.11 sera sortie)
-        let gameTitle = this.add.bitmapText(0,0,'pixel_font', 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', 50);
+
+        let gameTitle = this.add.bitmapText(0,0,'pixel_font', 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', 50, 1);
         Phaser.Display.Align.In.TopCenter(gameTitle, this.gameZone, 0, -20);
+    }
+
+    _onCrossFall(tween, targets, scene){
+        scene.cameras.cameras[0].shake(1500, .03);
     }
 
     update(){
