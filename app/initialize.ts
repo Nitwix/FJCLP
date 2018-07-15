@@ -1,12 +1,12 @@
 import Load from './scripts/scenes/load';
 import MainMenu from './scripts/scenes/mainMenu';
 
-import { gameProps } from './scripts/const';
+import { GAME_PROPS } from './scripts/const';
 
 const game = new Phaser.Game({
   // See <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
-  width: gameProps.width,
-  height: gameProps.height,
+  width: GAME_PROPS.width,
+  height: GAME_PROPS.height,
   // zoom: 1,
   // resolution: 1,
   type: Phaser.AUTO,

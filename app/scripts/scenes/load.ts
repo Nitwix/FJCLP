@@ -7,6 +7,9 @@ export default class Load extends Phaser.Scene{
         let startTime = (new Date()).getTime();
         console.log('loading...');
 
+        //load UI
+        this.load.spritesheet('largeBtn', 'UI/largeBtn.png', {frameWidth: 64, frameHeight: 32});
+
         //load images
         this.load.image('mainMenuBG', 'mainMenu/background.png');
         this.load.image('mainMenuCross', 'mainMenu/cross.png');
