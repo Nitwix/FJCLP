@@ -5,7 +5,7 @@ export const GAME_PROPS = {
 
 export const SCALE = 4;
 
-export const FONT_PROPS = {
+export const TEXT_PROPS = {
     font: 'pixel_font',
     sizes: {
         small: 30,

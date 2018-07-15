@@ -1,4 +1,5 @@
-import { GAME_PROPS, SCALE, FONT_PROPS } from '../const';
+import { GAME_PROPS, SCALE, TEXT_PROPS } from '../const';
+import Button from '../components/button';
 
 export default class MainMenu extends Phaser.Scene {
     gameZone;
@@ -24,22 +25,34 @@ export default class MainMenu extends Phaser.Scene {
                 onCompleteParams: [ this ]
         });
 
-        //bouton 'jouer'
-        let playBtn = this.add.sprite(0,0,'largeBtn');
+        /* //bouton 'jouer'
+        let playBtn = this.add.image(0,0,'largeBtn');
         playBtn.setScale(SCALE);
         Phaser.Display.Align.In.Center(playBtn, this.gameZone);
 
         //texte du bouton 'jouer'
-        let playTxt = this.add.bitmapText(0,0,FONT_PROPS.font, 'Jouer', FONT_PROPS.sizes.huge);
+        let playTxt = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Jouer', TEXT_PROPS.sizes.huge);
         playBtn.setScale(SCALE);
-        Phaser.Display.Align.In.Center(playTxt, playBtn, 5, 5);
+        Phaser.Display.Align.In.Center(playTxt, playBtn, 5, 5); */
 
-        let gameTitle = this.add.bitmapText(0,0,FONT_PROPS.font, 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', FONT_PROPS.sizes.big, 1);
+        let btn = new Button({
+            scene: this,
+            texture: 'largeBtn',
+            outFrame: 0,
+            overFrame: 1,
+            downFrame: 2,
+            upFrame: 0
+        });
+        btn.setScale(SCALE);
+        Phaser.Display.Align.In.Center(btn, this.gameZone);
+        this.add.existing(btn);
+
+        let gameTitle = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', TEXT_PROPS.sizes.big, 1);
         Phaser.Display.Align.In.TopCenter(gameTitle, this.gameZone, 0, -20);
     }
 
     _onCrossFall(tween, targets, scene){
-        scene.cameras.cameras[0].shake(1500, .03);
+        //scene.cameras.cameras[0].shake(1500, .03);
     }
 
     update(){
