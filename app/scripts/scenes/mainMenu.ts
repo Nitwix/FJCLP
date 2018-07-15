@@ -25,16 +25,6 @@ export default class MainMenu extends Phaser.Scene {
                 onCompleteParams: [ this ]
         });
 
-        /* //bouton 'jouer'
-        let playBtn = this.add.image(0,0,'largeBtn');
-        playBtn.setScale(SCALE);
-        Phaser.Display.Align.In.Center(playBtn, this.gameZone);
-
-        //texte du bouton 'jouer'
-        let playTxt = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Jouer', TEXT_PROPS.sizes.huge);
-        playBtn.setScale(SCALE);
-        Phaser.Display.Align.In.Center(playTxt, playBtn, 5, 5); */
-
         let btn = new Button({
             scene: this,
             texture: 'largeBtn',
@@ -42,7 +32,7 @@ export default class MainMenu extends Phaser.Scene {
             outFrame: 0,
             overFrame: 1,
             downFrame: 2,
-            upFrame: 0,
+            upFrame: 1,
 
             callback: () => {
                 console.log("clicked!");
@@ -58,7 +48,6 @@ export default class MainMenu extends Phaser.Scene {
             }
         });
         btn.setScale(SCALE);
-        // Phaser.Display.Align.In.Center(btn, this.gameZone);
         this.add.existing(btn);
 
         let gameTitle = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', TEXT_PROPS.sizes.big, 1);
