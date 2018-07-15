@@ -53,5 +53,3 @@ const game = new Phaser.Game({
   scene: [Load, MainMenu],
 
 });
-
-export default game;

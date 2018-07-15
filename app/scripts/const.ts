@@ -15,3 +15,6 @@ export const TEXT_PROPS = {
     },
     // tint: 
 };
+
+//mettre cette variable à 'true' pour désactiver les effets embêtants pour tester
+export const TESTING = false;

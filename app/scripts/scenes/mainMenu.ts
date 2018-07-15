@@ -1,4 +1,4 @@
-import { GAME_PROPS, SCALE, TEXT_PROPS } from '../const';
+import { GAME_PROPS, SCALE, TEXT_PROPS, TESTING } from '../const';
 import Button from '../components/button';
 
 export default class MainMenu extends Phaser.Scene {
@@ -38,13 +38,27 @@ export default class MainMenu extends Phaser.Scene {
         let btn = new Button({
             scene: this,
             texture: 'largeBtn',
+
             outFrame: 0,
             overFrame: 1,
             downFrame: 2,
-            upFrame: 0
+            upFrame: 0,
+
+            callback: () => {
+                console.log("clicked!");
+            },
+
+            text: "Jouer",
+            textSize: TEXT_PROPS.sizes.huge,
+            font: TEXT_PROPS.font,
+
+            alignIn: {
+                gameObject: this.gameZone,
+                pos: "Center"
+            }
         });
         btn.setScale(SCALE);
-        Phaser.Display.Align.In.Center(btn, this.gameZone);
+        // Phaser.Display.Align.In.Center(btn, this.gameZone);
         this.add.existing(btn);
 
         let gameTitle = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', TEXT_PROPS.sizes.big, 1);
@@ -52,7 +66,7 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     _onCrossFall(tween, targets, scene){
-        //scene.cameras.cameras[0].shake(1500, .03);
+        if(!TESTING) scene.cameras.cameras[0].shake(1500, .03);
     }
 
     update(){
