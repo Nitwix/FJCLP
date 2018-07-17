@@ -40,6 +40,8 @@ export default class MainMenu extends Phaser.Scene {
                 offsetY: -10
             }
         });
+
+        console.log(playBtn.scaleY);
         
         let cross = this.add.image(0, 0, 'mainMenuCross');
         cross.setScale(SCALE);
