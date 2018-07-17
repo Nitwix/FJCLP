@@ -1,4 +1,4 @@
-import { GAME_PROPS, SCALE, TEXT_PROPS, TESTING } from '../const';
+import { SCALE, TEXT_PROPS } from '../const';
 import Button from '../components/button';
 
 export default class MainMenu extends Phaser.Scene {
@@ -11,23 +11,14 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create(){
-        this.gameZone = this.add.zone(GAME_PROPS.width/2, GAME_PROPS.height/2, GAME_PROPS.width, GAME_PROPS.height);
+        const worldBounds = this.physics.world.bounds;
+        this.gameZone = this.add.zone(worldBounds.width/2, worldBounds.height/2, worldBounds.width, worldBounds.height);
 
-        let cross = this.add.image(0,0,'mainMenuCross');
-        cross.setScale(SCALE);
-        Phaser.Display.Align.In.TopCenter(cross, this.gameZone, 0, cross.displayHeight);
-        this.add.tween({
-                targets:cross, 
-                y:GAME_PROPS.height-100,
-                ease: 'Quad.easeIn',
-                duration: 1000,
-                onComplete: this._onCrossFall,
-                onCompleteParams: [ this ]
-        });
-
-        let btn = new Button({
+        let playBtn = new Button({
             scene: this,
             texture: 'largeBtn',
+
+            scale: SCALE,
 
             outFrame: 0,
             overFrame: 1,
@@ -42,24 +33,42 @@ export default class MainMenu extends Phaser.Scene {
             textSize: TEXT_PROPS.sizes.huge,
             font: TEXT_PROPS.font,
 
-            alignIn: {
+            align: {
+                relativity: 'In',
                 gameObject: this.gameZone,
-                pos: "Center"
+                pos: "Center",
+                offsetY: -10
             }
         });
-        btn.setScale(SCALE);
-        this.add.existing(btn);
-
+        
+        let cross = this.add.image(0, 0, 'mainMenuCross');
+        cross.setScale(SCALE);
+        Phaser.Display.Align.In.TopCenter(cross, this.gameZone, 0, cross.displayHeight);
+        this.add.tween({
+            targets: cross,
+            y: worldBounds.height - 100,
+            ease: 'Quad.easeIn',
+            duration: 1000,
+            onComplete: this._onCrossFall,
+            onCompleteParams: [this, playBtn]
+        });
+        
         let gameTitle = this.add.bitmapText(0,0,TEXT_PROPS.font, 'Frère Jean\ncontre\nles Pichrocoliens voleurs de raisin', TEXT_PROPS.sizes.big, 1);
         Phaser.Display.Align.In.TopCenter(gameTitle, this.gameZone, 0, -20);
     }
 
-    _onCrossFall(tween, targets, scene){
-        if(!TESTING) scene.cameras.cameras[0].shake(1500, .03);
-    }
+    _onCrossFall(tween, targets, scene, playBtn){
+        scene.cameras.main.shake(1500, .02);
 
-    update(){
-        
+        scene.cameras.main.on('camerashakecomplete', () => {
+            scene.add.tween({
+                targets: playBtn.container,
+                yoyo: true,
+                repeat: -1,
+                duration: 1024,
+                y: playBtn.container.y + 8
+            });
+        });
     }
 }
 
