@@ -3,7 +3,7 @@ export const GAME_PROPS = {
     height: 540
 };
 
-export const SCALE = 4;
+export const SCALE = 2;
 
 export const TEXT_PROPS = {
     font: 'pixel_font',
