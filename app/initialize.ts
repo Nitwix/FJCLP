@@ -1,5 +1,6 @@
 import Load from './scripts/scenes/load';
 import MainMenu from './scripts/scenes/mainMenu';
+import Game from './scripts/scenes/game';
 
 import { GAME_PROPS } from './scripts/const';
 
@@ -50,6 +51,6 @@ const game = new Phaser.Game({
   physics: {
     default: 'arcade',
   },
-  scene: [Load, MainMenu],
+  scene: [Load, MainMenu, Game],
 
 });

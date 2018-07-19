@@ -17,4 +17,5 @@ export const TEXT_PROPS = {
 };
 
 //mettre cette variable à 'true' pour désactiver les effets embêtants pour tester
-export const TESTING = false;
+export const TESTING = true;
+if(TESTING) console.warn('Le jeu est actuellement en mode TEST');
