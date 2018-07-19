@@ -28,7 +28,7 @@ export default class MainMenu extends Phaser.Scene {
             upFrame: 1,
 
             callback: () => {
-                console.log("clicked!");
+                this.scene.start('Game');
             },
 
             text: "Jouer",

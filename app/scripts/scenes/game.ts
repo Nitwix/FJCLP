@@ -13,6 +13,6 @@ export default class Game extends Phaser.Scene{
 
         let moneyBox = this.add.image(0,0,'smallBox');
         moneyBox.setScale(SCALE);
-        Phaser.Display.Align.In.TopRight(moneyBox, this.gameZone, -40, -20);
+        Phaser.Display.Align.In.TopRight(moneyBox, this.gameZone, -64, -32);
     }
 }
