@@ -9,6 +9,7 @@ export default class Load extends Phaser.Scene{
 
         //load UI
         this.load.spritesheet('largeBtn', 'sprites/UI/largeBtn.png', {frameWidth: 128, frameHeight: 64});
+        this.load.image('smallBox',  'sprites/UI/smallBox.png');
 
         //load images
         this.load.image('mainMenuBG', 'sprites/mainMenu/background.png');

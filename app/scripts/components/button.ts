@@ -42,7 +42,7 @@ export default class Button extends Phaser.GameObjects.Image {
 
         if (btnCfg.text) {
             this.buttonText = this.scene.add.bitmapText(0, 0, btnCfg.font, btnCfg.text, btnCfg.textSize, btnCfg.textAlign);
-            Phaser.Display.Align.In.Center(this.buttonText, this, 5, 5);
+            Phaser.Display.Align.In.Center(this.buttonText, this, 10, 10);
             this.buttonText.depth = 1;
         }
 

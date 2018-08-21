@@ -1,4 +1,4 @@
-import { SCALE, TEXT_PROPS } from '../const';
+import { SCALE, TEXT_PROPS, TESTING } from '../const';
 import Button from '../components/button';
 
 export default class MainMenu extends Phaser.Scene {
@@ -11,6 +11,8 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create(){
+        if(TESTING) this.scene.start('Game');
+
         const worldBounds = this.physics.world.bounds;
         this.gameZone = this.add.zone(worldBounds.width/2, worldBounds.height/2, worldBounds.width, worldBounds.height);
 
@@ -26,7 +28,7 @@ export default class MainMenu extends Phaser.Scene {
             upFrame: 1,
 
             callback: () => {
-                console.log("clicked!");
+                this.scene.start('Game');
             },
 
             text: "Jouer",
